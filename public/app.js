@@ -7,19 +7,20 @@ const getRandomExcuse = () => {
   let randomIndex = Math.floor(Math.random() * data.excuses.length);
   let excuse = data.excuses[randomIndex];
   excuseContainer.innerHTML = `
-  <p class="fw-bold fs-2 white">${randomIndex} - ${excuse}</p>
+  <p class="fw-bold fs-2 text-capitalize white">${
+    randomIndex + 1
+  } - ${excuse}</p>
   <div class="flex-row">
-  <button class="btn btn-light mb-2 me-2 refresh-button"><i class="fas fa-sync-alt"></i> New Excuse</button>
-  <button class="btn btn-light mb-2 copy-button"><i class="fas fa-copy"></i> Copy Excuse</button>
+  <button class="btn btn-secondary mb-2 fw-bold refresh-button"><i class="fas fa-sync-alt"></i> New Excuse</button>
+  <button class="btn btn-secondary mb-2 fw-bold view-all-button"><i class="fas fa-file-code"></i> View All</button>
   </div>
   `;
-  return excuse;
-};
-const copyButton = document.querySelector(".copy-button");
-const refreshButton = document.querySelector(".refresh-button");
+  const refreshButton = document.querySelector(".refresh-button");
+  const viewAllButton = document.querySelector(".view-all-button");
 
-const copyExcuse = (excuse) => {
-  excuse.select();
-  document.execCommand("copy");
+  refreshButton.addEventListener("click", () => location.reload());
+  viewAllButton.addEventListener("click", () => window.open(jsonFile));
+
+  return excuse;
 };
 getRandomExcuse();

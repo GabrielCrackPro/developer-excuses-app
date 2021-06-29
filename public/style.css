@@ -7,3 +7,25 @@
 .white {
   color: #fff;
 }
+.refresh-button:hover .fa-sync-alt {
+  animation: rotate 1s;
+}
+.refresh-button:not(:hover) .fa-sync-alt {
+  animation: a-rotate 1s;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes a-rotate {
+  from {
+    transform: rotate(359deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
